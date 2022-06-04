@@ -58,8 +58,8 @@ int main(int argc, char* argv[])
                 std::cin.get();
             }
         }
-        std::cout << "Finished generating embed files, press any key to close" << std::endl;
-        std::cin.get();
+        std::cout << "Finished generating embed files" << std::endl;
+        //std::cin.get();
     }
     else
     {
