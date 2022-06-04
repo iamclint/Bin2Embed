@@ -10,6 +10,14 @@
 #include <sstream>
 #include <cerrno>
 
+bool isNumber(const std::string& str)
+{
+    for (char const& c : str) {
+        if (std::isdigit(c) == 0) return false;
+    }
+    return true;
+}
+
 int main(int argc, char* argv[])
 {
     if (argc > 0)
@@ -26,6 +34,8 @@ int main(int argc, char* argv[])
                 std::string var_name = p.stem().string();
                 std::replace(var_name.begin(), var_name.end(), ' ', '_');
                 std::replace(var_name.begin(), var_name.end(), '-', '_');
+                if (isNumber(var_name.substr(0, 1))) //variables cannot start with a number
+                    var_name = "_" + var_name;
                 std::ifstream input(p.string(), std::ios::binary);
                 std::ofstream output(output_path.str(), std::ios::binary);
                 std::cout << "Input file: " << p.string() << std::endl;
